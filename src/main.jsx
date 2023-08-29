@@ -1,6 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  createHashRouter,
+  RouterProvider,
+} from "react-router-dom";
 import Store from "./Store/Store.jsx";
 import { Provider } from "react-redux";
 
@@ -16,8 +20,9 @@ import {
 } from "./Routes";
 
 import { Home } from "./components/index.js";
+import ErrorHandler from "./Routes/ErrorHandler.jsx";
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/",
     element: <App />,
@@ -25,6 +30,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+        errorElement: <ErrorHandler />,
         children: [
           {
             index: true,
