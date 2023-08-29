@@ -1,0 +1,22 @@
+.ToggleTheme {
+  display: none;
+}
+.ToggleTheme ~ label {
+  cursor: pointer;
+  display: block;
+  width: 3.2rem;
+  height: 1.5rem;
+  border-radius: 2rem;
+  position: relative;
+}
+.ToggleTheme ~ label > span {
+  position: absolute;
+  left: 2px;
+  top: 1px;
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 50%;
+}
+.ToggleTheme:checked ~ label > span {
+  left: 1.7rem;
+}

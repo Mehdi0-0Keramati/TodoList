@@ -1,0 +1,29 @@
+input[type="checkbox"] {
+  margin-top: 0.2rem;
+  appearance: none;
+  background-color: transparent;
+  width: 1.15rem;
+  height: 1.15rem;
+  border: 0.15rem solid tomato;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+}
+
+input[type="checkbox"]::before {
+  content: "";
+  position: absolute;
+  left: 0.22rem;
+  top: 0.22rem;
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+  background-color: transparent;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+}
+
+input[type="checkbox"]:checked::before {
+  transform: scale(1);
+  background: tomato;
+}
