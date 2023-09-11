@@ -2,25 +2,17 @@ import React from "react";
 import { AddTaskButtonBox } from "../Layout/index";
 import Task from "./Task";
 import { useSelector } from "react-redux";
+import BaseRouteTasks from "./BaseRouteTasks";
 
 const AllTasks = () => {
   const tasks = useSelector((state) => state.tasks);
 
-  return (
-    <section className="mt-10 w-full h-full text-textColor">
-      <h1 className="text-2xl font-semibold dark:text-white">
-        All tasks ({tasks.length} tasks)
-      </h1>
+  const AllTasksData = tasks?.map((task) => task);
+  const TasksTitle = `All ${
+    tasks.length > 0 ? `tasks (${tasks.length})` : `task (${tasks.length})`
+  }`;
 
-      <section className="grid grid-cols-3 place-items-center  gap-8 mt-20">
-        {tasks?.map((task) => (
-          <Task key={task.id} task={task} />
-        ))}
-
-        <AddTaskButtonBox />
-      </section>
-    </section>
-  );
+  return <BaseRouteTasks tasksTitle={TasksTitle} tasksData={AllTasksData} />;
 };
 
 export default React.memo(AllTasks);

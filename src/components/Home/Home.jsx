@@ -4,9 +4,11 @@ import Header from "./Header";
 const Home = () => {
   return (
     <section className="w-full flex justify-center items-start">
-      <div className="w-8/12 p-6 px-8">
+      <div className="w-full xl:w-8/12 md:p-6 md:px-8">
         <Header />
-        <Outlet />
+        <div className="pt-10 px-5">
+          <Outlet />
+        </div>
       </div>
     </section>
   );

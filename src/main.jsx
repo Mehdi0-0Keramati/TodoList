@@ -1,10 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import {
-  createBrowserRouter,
-  createHashRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { createHashRouter, RouterProvider } from "react-router-dom";
 import Store from "./Store/Store.jsx";
 import { Provider } from "react-redux";
 
@@ -21,6 +17,7 @@ import {
 
 import { Home } from "./components/index.js";
 import ErrorHandler from "./Routes/ErrorHandler.jsx";
+import SearchedTask from "./Routes/SearchedTask.jsx";
 
 const router = createHashRouter([
   {
@@ -51,6 +48,10 @@ const router = createHashRouter([
           {
             path: "uncompleted",
             element: <UnCompletedTasks />,
+          },
+          {
+            path: "tasks/:SearchTaskId",
+            element: <SearchedTask />,
           },
         ],
       },

@@ -1,23 +1,29 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import Task from "./Task";
-import { AddTaskButtonBox } from "../Layout/index";
+import BaseRouteTasks from "./BaseRouteTasks";
 
 const ImportantTasks = () => {
   const tasks = useSelector((state) => state.tasks);
 
+  const ImportantTasksData = tasks?.map((task) =>
+    task.isImportant ? task : null
+  );
+
+  const ImportantCountTasks = [];
+  for (let i = 0; i < tasks.length; i++) {
+    if (tasks[i].isImportant == true) {
+      ImportantCountTasks.push(tasks[i]);
+    }
+  }
+
+  const TasksTitle = `Important ${
+    ImportantCountTasks.length > 1
+      ? `tasks (${ImportantCountTasks.length})`
+      : `task (${ImportantCountTasks.length})`
+  }`;
+
   return (
-    <section className="mt-10 w-full h-full text-textColor">
-      <h1 className="text-2xl font-semibold dark:text-white">Important tasks</h1>
-
-      <section className="grid grid-cols-3 place-items-center  gap-8 mt-20">
-        {tasks?.map(
-          (task) => task.isImportant && <Task key={task.id} task={task} />
-        )}
-
-        <AddTaskButtonBox />
-      </section>
-    </section>
+    <BaseRouteTasks tasksTitle={TasksTitle} tasksData={ImportantTasksData} />
   );
 };
 

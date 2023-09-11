@@ -1,11 +1,11 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import Styles from "./ToggleTheme.module.css";
 import { TasksActions } from "../Store/Slices/tasks-slice";
 
 const ToggleTheme = () => {
   const dispatch = useDispatch();
-  const currentTheme = useSelector((state) => state.currentTheme);
+
   return (
     <div className="flex justify-between">
       <h4>Change Theme</h4>

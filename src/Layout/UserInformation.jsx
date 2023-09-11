@@ -1,4 +1,5 @@
 import userPic from ".././assets/avatar-1.jpg";
+
 const UserInformation = () => {
   return (
     <div className="flex items-center justify-center gap-4">

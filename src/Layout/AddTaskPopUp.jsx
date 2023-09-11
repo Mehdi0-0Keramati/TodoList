@@ -6,7 +6,6 @@ import { ReactComponent as SvgX } from "../assets/x.svg";
 const AddTaskPopUp = () => {
   const dispatch = useDispatch();
   const currentTheme = useSelector((state) => state.currentTheme);
-  console.log(currentTheme);
 
   return createPortal(
     <section
@@ -16,12 +15,12 @@ const AddTaskPopUp = () => {
     >
       <div
         onClick={closePopup}
-        className="overlay w-full h-full bg-[#00000073] absolute top-0 left-0 z-0"
+        className="overlay w-full h-full bg-[#00000073] absolute top-0 left-0 z-20"
       ></div>
 
       <form
         onSubmit={AddTaskHandler}
-        className="rounded-2xl z-10 flex flex-col justify-around gap-4 w-1/3 bg-lightMainBg dark:bg-[#0F172A] dark:text-textColor p-4"
+        className="rounded-2xl z-40 flex flex-col justify-around gap-4 w-4/5 sm:w-3/5 md:w-2/5 xl:w-1/3 bg-lightMainBg dark:bg-[#0F172A] dark:text-textColor p-4"
       >
         <div className="flex items-center justify-between">
           <h2 className="font-semibold text-2xl dark:text-white ">
@@ -110,7 +109,6 @@ const AddTaskPopUp = () => {
       isImportant: data.important == "on" ? true : false,
       isToday: data.date == dateFormated ? true : false,
     };
-    console.log(newTask);
 
     dispatch(TasksActions.AddTask(newTask));
     dispatch(TasksActions.popupOn());

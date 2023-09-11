@@ -1,24 +1,26 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import Task from "./Task";
-import { AddTaskButtonBox } from "../Layout/index";
+import BaseRouteTasks from "./BaseRouteTasks";
 
 const TodayTasks = () => {
   const tasks = useSelector((state) => state.tasks);
 
-  return (
-    <section className="mt-10 w-full h-full text-textColor">
-      <h1 className="text-2xl font-semibold darK:text-white">Today's tasks</h1>
+  const TodayTasksData = tasks?.map((task) => (task.isToday ? task : null));
 
-      <section className="grid grid-cols-3 place-items-center  gap-8 mt-20">
-        {tasks?.map(
-          (task) => task.isToday && <Task key={task.id} task={task} />
-        )}
+  const TodayCountTasks = [];
+  for (let i = 0; i < tasks.length; i++) {
+    if (tasks[i].isToday == true) {
+      TodayCountTasks.push(tasks[i]);
+    }
+  }
 
-        <AddTaskButtonBox />
-      </section>
-    </section>
-  );
+  const TasksTitle = `Today's ${
+    TodayCountTasks.length > 1
+      ? `tasks (${TodayCountTasks.length})`
+      : `task (${TodayCountTasks.length})`
+  }`;
+
+  return <BaseRouteTasks tasksTitle={TasksTitle} tasksData={TodayTasksData} />;
 };
 
-export default React.memo(TodayTasks) ;
+export default React.memo(TodayTasks);
